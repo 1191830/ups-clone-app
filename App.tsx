@@ -5,7 +5,7 @@ import RootNavigator from "./navigator/RootNavigator";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: "https://ups-clone-61900-default-rtdb.europe-west1.firebasedatabase.app/",
+  uri: "http://localhost:5001/api/quiet-turkey",
   cache: new InMemoryCache(),
 });
 export default function App() {

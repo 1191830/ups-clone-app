@@ -10,6 +10,9 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { TabStackParamsList } from "../navigator/TabNavigator";
 import { RootStackParamList } from "../navigator/RootNavigator";
 import { Image, Input } from "@rneui/themed";
+import CustomerCard from "../components/CustomerCard";
+import { useQuery } from "@apollo/client";
+import { GET_CUSTOMERS } from "../graphql/queries";
 
 export type CustomersScreenNavigationProp = CompositeNavigationProp<
   BottomTabNavigationProp<TabStackParamsList, "Customers">,
@@ -19,7 +22,8 @@ export type CustomersScreenNavigationProp = CompositeNavigationProp<
 const CustomersScreen = () => {
   const tw = useTailwind();
   const navigation = useNavigation<CustomersScreenNavigationProp>();
-  const [input, setInput] = useState<string>();
+  const [input, setInput] = useState<string>("");
+  const { loading, error, data } = useQuery(GET_CUSTOMERS);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -42,6 +46,16 @@ const CustomersScreen = () => {
         onChangeText={setInput}
         containerStyle={tw("bg-white pt-5 pb-0 px-10")}
       />
+      {data?.getCustomers
+        ?.filter((customer: CustomerList) => {
+          return (
+            customer.value.name.includes(input) ||
+            customer.value.email.includes(input)
+          );
+        })
+        .map(({ name: ID, value: { email, name } }: CustomerResponse) => (
+          <CustomerCard key={ID} name={name} email={email} userId={ID} />
+        ))}
     </ScrollView>
   );
 };

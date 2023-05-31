@@ -9,7 +9,7 @@ type CustomerList {
 }
 
 type Query {
-  getCustomers: JSON
+  getCustomers: [CustomerList]
     @rest(
       endpoint: "https://ups-clone-61900-default-rtdb.europe-west1.firebasedatabase.app/customers.json"
       transforms: [{pathpattern: [], editor: "objectToArray"}]
