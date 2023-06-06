@@ -26,12 +26,26 @@
   z-index: 10
 }
 
+.my-2 {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto
+}
+
 .mb-5 {
   margin-bottom: 1.25rem
 }
 
 .ml-auto {
   margin-left: auto
+}
+
+.mt-5 {
+  margin-top: 1.25rem
 }
 
 .block {
@@ -132,6 +146,21 @@
   line-height: 1.75rem
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem
+}
+
 .font-bold {
   font-weight: 700
 }
@@ -146,4 +175,9 @@
 
 .italic {
   font-style: italic
+}
+
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity))
 }
